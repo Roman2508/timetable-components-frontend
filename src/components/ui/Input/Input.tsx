@@ -26,24 +26,32 @@ const Input: React.FC<IInputProps> = ({
   const { colorMode } = React.useContext(ThemeContext)
 
   const [isFocus, setIsFocus] = React.useState(false)
+  const [isFocusLabel, setIsFocusLabel] = React.useState(false)
+
+  const onFocusHandler = () => {
+    setIsFocus(true)
+    setIsFocusLabel(true)
+  }
 
   const onBlurHandler = () => {
     if (!value) {
       setIsFocus(false)
     }
+    setIsFocusLabel(false)
   }
 
   return (
     <div className={styles.wrapper}>
       <label
         className={cn(styles.label, {
+          [styles.errorLabel]: isError,
+          [styles.focusLabel]: isFocusLabel,
           [styles.standartLabel]: variant === 'standart',
           [styles.outlinedLabel]: variant === 'outlined',
           [styles.focusLabelDark]: isFocus && colorMode === 'dark',
           [styles.focusLabelLight]: isFocus && colorMode === 'light',
           [styles.focusStandartLabel]: isFocus && variant === 'standart',
           [styles.focusOutlinedLabel]: isFocus && variant === 'outlined',
-          [styles.errorLabel]: isError,
         })}>
         {label}
       </label>
@@ -51,6 +59,7 @@ const Input: React.FC<IInputProps> = ({
       <div
         className={cn(styles.inputWrapper, {
           [styles.bottomLine]: isFocus && variant === 'standart',
+          [styles.focusInput]: isFocusLabel,
           [styles.errorBottomLine]: isError,
         })}>
         {/*  */}
@@ -59,11 +68,12 @@ const Input: React.FC<IInputProps> = ({
           type="text"
           onBlur={onBlurHandler}
           style={{ width: width }}
-          onFocus={() => setIsFocus(true)}
+          onFocus={onFocusHandler}
           className={cn(styles.input, {
             [styles.outlinedInput]: variant === 'outlined',
             [styles.standartInput]: variant === 'standart',
             [styles.darkModeInput]: colorMode === 'dark',
+            [styles.lightModeInput]: colorMode === 'light',
             [styles.errorInput]: isError,
           })}
           onChange={(e) => setValue(e.target.value)}

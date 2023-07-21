@@ -40,6 +40,10 @@
   background-color: #23272f;
 }
 
+.focusLabel {
+  color: #087ea4;
+}
+
 .focusStandartLabel {
   left: -5px;
 }
@@ -58,8 +62,11 @@
   background-color: transparent;
 }
 
-.darkModeInput {
-  color: #fff;
+.outlinedInput.darkModeInput:hover {
+  border: 1px solid #ffffff;
+}
+.outlinedInput.lightModeInput:hover {
+  border: 1px solid #000000;
 }
 
 .standartInput {
@@ -69,6 +76,14 @@
 
   &:hover {
     border-bottom: 1px solid #000000;
+  }
+}
+
+.darkModeInput {
+  color: #fff;
+
+  &:hover {
+    border-bottom: 1px solid #ffffff;
   }
 }
 
@@ -88,7 +103,7 @@
   background-color: #ca4240;
 }
 
-.inputWrapper.bottomLine::after {
+.inputWrapper.bottomLine.focusInput::after {
   transform: scaleX(1);
 }
 
@@ -103,21 +118,29 @@
 
   &:focus {
     padding: 9px 13px;
-    border: 2px solid #087ea4;
+    border: 2px solid #087ea4 !important;
     position: relative;
   }
 }
 
+.outlinedInput.lightModeInput:hover {
+  border: 1px solid #000000;
+}
+
+// .outlinedInput.darkModeInput:hover {
+//   border: 1px solid #ffffff;
+// }
+
 .standartInput.errorInput {
-  border-bottom: 1px solid #ca4240;
+  border-bottom: 1px solid #ca4240 !important;
 }
 
 .outlinedInput.errorInput {
-  border: 1px solid #ca4240;
+  border: 1px solid #ca4240 !important;
 }
 
 .outlinedInput.errorInput:focus {
-  border: 2px solid #ca4240;
+  border: 2px solid #ca4240 !important;
 }
 
 /* input */

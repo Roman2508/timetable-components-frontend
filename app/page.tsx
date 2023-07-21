@@ -80,19 +80,22 @@ export default function Home() {
           </ToggleButtonItem>
         </ToggleButtonWrapper>
 
-        <div style={{ padding: '20px 60px' }}>
+        <div
+          style={{
+            padding: '20px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+            flexWrap: 'wrap',
+          }}>
           <Input value={inputValue} setValue={setInputValue} label="input label">
             11111
           </Input>
-        </div>
 
-        <div style={{ padding: '20px 60px' }}>
           <Input value={inputValue} setValue={setInputValue} label="input label" variant="standart">
             11111
           </Input>
-        </div>
 
-        <div style={{ padding: '20px 60px' }}>
           <Input
             value={inputValue}
             setValue={setInputValue}
@@ -101,9 +104,7 @@ export default function Home() {
             errorMessage="Мінімальна довжина паролю - 6 символів">
             11111
           </Input>
-        </div>
 
-        <div style={{ padding: '20px 60px' }}>
           <Input
             value={inputValue}
             setValue={setInputValue}
