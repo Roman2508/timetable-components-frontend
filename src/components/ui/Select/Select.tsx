@@ -39,6 +39,8 @@ const Select: React.FC<ISelectProps> = ({
     setIsFocusLabel(false)
   }
 
+  console.log(value)
+
   return (
     <>
       <div className={styles.wrapper}>
