@@ -1,6 +1,7 @@
 .wrapper {
   position: relative;
   display: inline-flex;
+  z-index: 3;
 }
 
 /* label */
@@ -26,7 +27,7 @@
 
 .focusLabelLight {
   top: 0;
-  z-index: 1;
+  z-index: 3;
   padding: 0 5px;
   font-size: 13px;
   background-color: #fafafa;
@@ -34,7 +35,7 @@
 
 .focusLabelDark {
   top: 0;
-  z-index: 1;
+  z-index: 3;
   padding: 0 5px;
   font-size: 13px;
   background-color: #23272f;
@@ -58,6 +59,7 @@
 
 .input {
   outline: none;
+  cursor: pointer;
   font-size: 18px;
   background-color: transparent;
 }
@@ -108,7 +110,7 @@
 }
 
 .outlinedInput {
-  padding: 10px 14px;
+  padding: 10px 30px 14px 10px;
   border: 1px solid #acaec9;
   border-radius: 5px;
 
@@ -117,7 +119,7 @@
   }
 
   &:focus {
-    padding: 9px 13px;
+    padding: 9.04px 29px 13.04px 9px;
     border: 2px solid #087ea4 !important;
     position: relative;
   }
@@ -127,30 +129,98 @@
   border: 1px solid #000000;
 }
 
-.standartInput.errorInput {
-  border-bottom: 1px solid #ca4240 !important;
-}
-
-.outlinedInput.errorInput {
-  border: 1px solid #ca4240 !important;
-}
-
-.outlinedInput.errorInput:focus {
-  border: 2px solid #ca4240 !important;
-}
-
-/* input */
-
-/* errorMessage */
-
-.errorMessage {
-  bottom: -18px;
-  font-size: 12px;
-  color: #ca4240;
-  overflow: hidden;
+.inputIcon {
   position: absolute;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease-in-out;
 }
 
-/* errorMessage */
+.rotated {
+  transform: translateY(-50%) rotate(-180deg);
+}
+
+/* select */
+
+.selectList {
+  z-index: 3;
+  top: 50px;
+  width: 100%;
+  padding: 8px 0 8px 6px;
+  border-radius: 8px;
+  position: absolute;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.selectListLight {
+  background-color: #ffffff;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
+}
+.selectListDark {
+  background-color: #343a46;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.selectListHide {
+  display: none;
+}
+
+.selectListOverlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+/* select list scrollbar */
+
+.selectList::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+.selectList::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Handle */
+.selectList::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+.selectList::-webkit-scrollbar-thumb:hover {
+  background: #6a6a6a;
+}
+/* // select list scrollbar */
+
+.selectItem {
+  cursor: pointer;
+  padding: 8px 16px;
+}
+
+.selectItemDark {
+  &:hover {
+    background-color: #414857;
+  }
+
+  &:active {
+    background-color: #30343c;
+  }
+}
+
+.selectItemLight {
+  &:hover {
+    background-color: #eff0f0;
+  }
+
+  &:active {
+    background-color: #d5d5d5;
+  }
+}
+/* // select */

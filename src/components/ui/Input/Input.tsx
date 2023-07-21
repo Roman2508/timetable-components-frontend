@@ -10,7 +10,6 @@ interface IInputProps {
   label?: string
   value?: string
   width?: string
-  children: JSX.Element | JSX.Element[] | string
   setValue: React.Dispatch<React.SetStateAction<string>>
 }
 

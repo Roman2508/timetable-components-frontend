@@ -13,6 +13,10 @@ import { handleClickOutside } from '@/src/hooks/handleClickOutside'
 import ToggleButtonWrapper from '@/src/components/ui/ToggleButton/ToggleButtonWrapper'
 import ToggleButtonItem from '@/src/components/ui/ToggleButton/ToggleButtonItem'
 import Input from '@/src/components/ui/Input/Input'
+import ListWrapper from '@/src/components/ui/List/ListWrapper'
+import ListItem from '@/src/components/ui/List/ListItem'
+import Select from '@/src/components/ui/Select/Select'
+import SelectItem from '@/src/components/ui/Select/SelectItem'
 // import {} from 'next/font/local'
 
 // todo:
@@ -21,16 +25,18 @@ import Input from '@/src/components/ui/Input/Input'
 // modal component done
 // paper component done
 // toggle button component done
-// tabs component ??
 // input component done
+// select component done
+// list component done
+// tabs component ??
+
 // title component
+// tooltip component // всплывающая подсказка
+// icon-button component
+// table component
 // checkbox component
 // sidebar component
-// select component
-// list component
-// tooltip component // всплывающая подсказка
-// table component
-// icon-button component
+// header component
 // alert component
 // pagination component
 
@@ -42,6 +48,8 @@ export default function Home() {
   const [activeButton, setActiveButton] = React.useState(0)
 
   const [inputValue, setInputValue] = React.useState('')
+
+  const [selectItemValue, setSelectItemValue] = React.useState('')
 
   return (
     <main
@@ -88,22 +96,17 @@ export default function Home() {
             alignItems: 'flex-end',
             flexWrap: 'wrap',
           }}>
-          <Input value={inputValue} setValue={setInputValue} label="input label">
-            11111
-          </Input>
+          <Input value={inputValue} setValue={setInputValue} label="input label" />
 
-          <Input value={inputValue} setValue={setInputValue} label="input label" variant="standart">
-            11111
-          </Input>
+          <Input value={inputValue} setValue={setInputValue} label="input label" variant="standart" />
 
           <Input
             value={inputValue}
             setValue={setInputValue}
             label="input label"
             isError={true}
-            errorMessage="Мінімальна довжина паролю - 6 символів">
-            11111
-          </Input>
+            errorMessage="Мінімальна довжина паролю - 6 символів"
+          />
 
           <Input
             value={inputValue}
@@ -111,9 +114,24 @@ export default function Home() {
             label="input label"
             variant="standart"
             isError={true}
-            errorMessage="Не вірний формат пошти">
-            11111
-          </Input>
+            errorMessage="Не вірний формат пошти"
+          />
+        </div>
+
+        <div
+          style={{
+            padding: '20px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+            flexWrap: 'wrap',
+          }}>
+          <Select value={selectItemValue} label="input label" variant="standart">
+            <SelectItem value={'Item 1'} onChange={setSelectItemValue} />
+            <SelectItem value={'Item 2'} onChange={setSelectItemValue} />
+            <SelectItem value={'Item 3'} onChange={setSelectItemValue} />
+            <SelectItem value={'Item 4'} onChange={setSelectItemValue} />
+          </Select>
         </div>
 
         <h1>Title Level 1</h1>
@@ -125,7 +143,34 @@ export default function Home() {
 
         <Paper width="800px">
           <h4>Paper title</h4>
-          <p>
+          <p style={{ padding: '30px 0' }}>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa quae, quasi sed commodi sit est, sint ipsam
+            nam illum pariatur nobis earum fuga voluptatibus eveniet! Velit consequatur nemo dolores dolorum. Architecto
+            numquam, quae aut deserunt est ipsa soluta itaque veritatis! Sed quo officia, beatae a dolorum, amet culpa
+            obcaecati exercitationem minima iusto, quam architecto dolor doloribus praesentium. Amet, laborum animi.
+          </p>
+          <Input value={inputValue} setValue={setInputValue} label="input label" />
+
+          <Input value={inputValue} setValue={setInputValue} label="input label" variant="standart" />
+
+          <Input
+            value={inputValue}
+            setValue={setInputValue}
+            label="input label"
+            isError={true}
+            errorMessage="Мінімальна довжина паролю - 6 символів"
+          />
+
+          <Input
+            value={inputValue}
+            setValue={setInputValue}
+            label="input label"
+            variant="standart"
+            isError={true}
+            errorMessage="Не вірний формат пошти"
+          />
+
+          <p style={{ padding: '30px 0' }}>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa quae, quasi sed commodi sit est, sint ipsam
             nam illum pariatur nobis earum fuga voluptatibus eveniet! Velit consequatur nemo dolores dolorum. Architecto
             numquam, quae aut deserunt est ipsa soluta itaque veritatis! Sed quo officia, beatae a dolorum, amet culpa
@@ -168,13 +213,13 @@ export default function Home() {
           </Button>
         </div>
 
-        <ul>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-          <li>Item 4</li>
-          <li>Item 5</li>
-        </ul>
+        <ListWrapper>
+          <ListItem>Item 1</ListItem>
+          <ListItem>Item 2</ListItem>
+          <ListItem>Item 3</ListItem>
+        </ListWrapper>
+
+        <div style={{ padding: '100px' }}></div>
       </div>
     </main>
   )

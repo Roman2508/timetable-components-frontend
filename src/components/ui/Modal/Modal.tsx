@@ -32,12 +32,15 @@ const Modal = React.forwardRef<React.FC, React.PropsWithChildren<IModalProps>>(
 
     return (
       <>
-        {isShow && (
-          <div className={styles.layout}>
+        {/* {isShow && ( */}
+        <div className={cn(styles.layout, { [styles.layoutClose]: !isShow })}>
+          <div className={styles.modalWrapper}>
             <div
               className={cn(styles.modal, {
                 [styles.dark]: colorMode === 'dark',
                 [styles.light]: colorMode === 'light',
+                [styles.openModal]: isShow,
+                [styles.closeModal]: !isShow,
               })}
               //@ts-ignore
               ref={ref}>
@@ -48,7 +51,8 @@ const Modal = React.forwardRef<React.FC, React.PropsWithChildren<IModalProps>>(
               {children}
             </div>
           </div>
-        )}
+        </div>
+        {/* )} */}
       </>
     )
   },
