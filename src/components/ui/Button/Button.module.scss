@@ -1,0 +1,57 @@
+.button {
+  margin: 50px 20px;
+  border: 0;
+  padding: 10px 30px;
+  border-radius: 4px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button:hover {
+  opacity: 0.95;
+}
+
+.button:active {
+  transform: translateY(5%);
+}
+
+.hover {
+  position: relative;
+}
+
+/* 
+const colors = {
+  blue: {
+    bg: '#688bef',
+    text: '#ffffff',
+    hover: 'lighten(#688bef, .5)',
+  },
+  green: {
+    bg: '#4FC488',
+    text: '#ffffff',
+  },
+  pink: {
+    bg: '#DB7BA9',
+    text: '#ffffff',
+  },
+  red: {
+    bg: '#CA4240',
+    text: '#ffffff',
+  },
+  violet: {
+    bg: '#B269F6',
+    text: '#ffffff',
+  },
+  gray: {
+    bg: '#acaec9',
+    text: '#000000',
+  },
+  white: {
+    bg: '#fafafa',
+    text: '#000000',
+  },
+}
+*/

@@ -1,0 +1,28 @@
+@import './fonts/font.css';
+
+/* 
+colors:
+
+black: #23272f
+gray: #343A46
+
+*/
+
+* {
+  font-family: 'Gilroy', 'Roboto', 'sans-serif';
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

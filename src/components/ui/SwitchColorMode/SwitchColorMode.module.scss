@@ -1,0 +1,17 @@
+.toggleMode {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  line-height: 60px;
+  margin-left: 100px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.toggleModeDark:hover {
+  background-color: #343a46;
+}
+
+.toggleModeLight:hover {
+  background-color: #343a4612;
+}

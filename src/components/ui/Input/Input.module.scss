@@ -1,0 +1,137 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+/* label */
+
+.label {
+  top: 50%;
+  font-size: 18px;
+  position: absolute;
+  transform: translateY(-50%);
+  transition: all 0.2s ease-in-out;
+}
+
+.label.errorLabel {
+  color: #ca4240;
+}
+
+.outlinedLabel {
+  left: 9px;
+}
+.standartLabel {
+  left: 0;
+}
+
+.focusLabelLight {
+  top: 0;
+  z-index: 1;
+  padding: 0 5px;
+  font-size: 12px;
+  background-color: #fafafa;
+}
+
+.focusLabelDark {
+  top: 0;
+  z-index: 1;
+  padding: 0 5px;
+  font-size: 14px;
+  background-color: #23272f;
+}
+
+.focusStandartLabel {
+  left: -5px;
+}
+
+/* label */
+
+/* input */
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  outline: none;
+  font-size: 18px;
+  background-color: transparent;
+}
+
+.darkModeInput {
+  color: #fff;
+}
+
+.standartInput {
+  border: 0;
+  padding: 8px 0;
+  border-bottom: 1px solid #acaec9;
+
+  &:hover {
+    border-bottom: 1px solid #000000;
+  }
+}
+
+.inputWrapper::after {
+  content: '';
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  transform: scaleX(0);
+  width: 100%;
+  height: 2px;
+  background-color: #087ea4;
+  bottom: 0;
+  left: 0;
+}
+
+.inputWrapper.errorBottomLine::after {
+  background-color: #ca4240;
+}
+
+.inputWrapper.bottomLine::after {
+  transform: scaleX(1);
+}
+
+.outlinedInput {
+  padding: 10px 14px;
+  border: 1px solid #acaec9;
+  border-radius: 5px;
+
+  &:hover {
+    border: 1px solid #000000;
+  }
+
+  &:focus {
+    padding: 9px 13px;
+    border: 2px solid #087ea4;
+    position: relative;
+  }
+}
+
+.standartInput.errorInput {
+  border-bottom: 1px solid #ca4240;
+}
+
+.outlinedInput.errorInput {
+  border: 1px solid #ca4240;
+}
+
+.outlinedInput.errorInput:focus {
+  border: 2px solid #ca4240;
+}
+
+/* input */
+
+/* errorMessage */
+
+.errorMessage {
+  bottom: -18px;
+  font-size: 12px;
+  color: #ca4240;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* errorMessage */
