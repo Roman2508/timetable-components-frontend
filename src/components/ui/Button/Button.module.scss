@@ -7,11 +7,12 @@
   text-transform: uppercase;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .button:hover {
   opacity: 0.95;
+  transform: scale(1.1);
 }
 
 .button:active {
