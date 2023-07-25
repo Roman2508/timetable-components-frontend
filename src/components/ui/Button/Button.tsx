@@ -56,15 +56,17 @@ const colors = {
 interface IButtonProps {
   children: string
   color: keyof typeof colors
-  variant?: 'filled' | 'outlined'
+  variant?: 'filled' | 'outlined' | 'text'
   classNames?: [string]
   additionalStyles?: React.CSSProperties
+  disabled?: boolean
 }
 
 const Button: React.FC<React.PropsWithChildren<IButtonProps>> = ({
   children = '',
   color = 'blue',
   variant = 'filled',
+  disabled = false,
   classNames = [],
   additionalStyles = {},
 }) => {
@@ -79,14 +81,20 @@ const Button: React.FC<React.PropsWithChildren<IButtonProps>> = ({
   }
 
   const buttonStyles =
-    variant == 'filled'
+    variant === 'filled'
       ? {
           color: colors[color].text,
           backgroundColor: colors[color].bg,
         }
-      : {
+      : variant === 'outlined'
+      ? {
           color: colors[color].bg,
           border: `1px solid ${colors[color].bg}`,
+          backgroundColor: isHover ? `${colors[color].bg}31` : 'transparent',
+        }
+      : {
+          color: colors[color].bg,
+          border: 0,
           backgroundColor: isHover ? `${colors[color].bg}31` : 'transparent',
         }
 
@@ -95,7 +103,8 @@ const Button: React.FC<React.PropsWithChildren<IButtonProps>> = ({
       className={cn(styles.button, ...classNames)}
       style={{ ...buttonStyles, ...additionalStyles }}
       onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}>
+      onMouseLeave={() => setIsHover(false)}
+      disabled={disabled}>
       {children}
     </button>
   )

@@ -15,7 +15,8 @@
 }
 
 .lightTheme {
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
+  background-color: #f4f4f4;
   color: #00272f;
   min-height: 100%;
 }

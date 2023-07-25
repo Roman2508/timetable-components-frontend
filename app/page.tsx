@@ -17,6 +17,11 @@ import ListWrapper from '@/src/components/ui/List/ListWrapper'
 import ListItem from '@/src/components/ui/List/ListItem'
 import Select from '@/src/components/ui/Select/Select'
 import SelectItem from '@/src/components/ui/Select/SelectItem'
+import Title from '@/src/components/ui/Title/Title'
+import Text from '@/src/components/ui/Text/Text'
+import IconButton from '@/src/components/ui/IconButton/IconButton'
+import { CiLight, CiDark } from 'react-icons/ci'
+import Table from '@/src/components/ui/Table/Table'
 // import {} from 'next/font/local'
 
 // todo:
@@ -25,14 +30,15 @@ import SelectItem from '@/src/components/ui/Select/SelectItem'
 // modal component done
 // paper component done
 // toggle button component done
-// input component done
+// input component done     !!!type number???????
 // select component done
 // list component done
+// title component done
+// text component done
 // tabs component ??
+// icon-button component done
 
-// title component
 // tooltip component // всплывающая подсказка
-// icon-button component
 // table component
 // checkbox component
 // sidebar component
@@ -58,16 +64,12 @@ export default function Home() {
         [styles.lightTheme]: colorMode === 'light',
       })}>
       <Modal isShow={isShow} setIsShow={setIsShow} ref={ref} modalTitle="SDFDF SFSD F S">
-        <p>
-          Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem,
-          ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum.
-          Lorem, ipsum.
-        </p>
-        <p>
-          Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem,
-          ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum. Lorem, ipsum.
-          Lorem, ipsum.
-        </p>
+        <Text>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa quae, quasi sed commodi sit est, sint ipsam
+          nam illum pariatur nobis earum fuga voluptatibus eveniet! Velit consequatur nemo dolores dolorum. Architecto
+          numquam, quae aut deserunt est ipsa soluta itaque veritatis! Sed quo officia, beatae a dolorum, amet culpa
+          obcaecati exercitationem minima iusto, quam architecto dolor doloribus praesentium. Amet, laborum animi.
+        </Text>
       </Modal>
 
       <div className={styles.container}>
@@ -134,21 +136,47 @@ export default function Home() {
           </Select>
         </div>
 
-        <h1>Title Level 1</h1>
-        <h2>Title Level 2</h2>
-        <h3>Title Level 3</h3>
-        <h4>Title Level 4</h4>
-        <h5>Title Level 5</h5>
-        <h6>Title Level 6</h6>
+        <Title align="left" Variant="h1">
+          Custom title Level 1
+        </Title>
+        <Title align="left" Variant="h2" color="gray">
+          Custom title Level 1
+        </Title>
+        <Title align="left" Variant="h3" color="green">
+          Custom title Level 1
+        </Title>
+        <Title align="left" Variant="h4">
+          Custom title Level 1
+        </Title>
+        <Title align="left" Variant="h5">
+          Custom title Level 1
+        </Title>
+        <Title align="left" Variant="h6">
+          Custom title Level 1
+        </Title>
+
+        <div style={{ padding: '30px' }}>
+          <IconButton>
+            <CiLight size={30} />
+          </IconButton>
+
+          <IconButton>
+            <CiDark size={40} />
+          </IconButton>
+        </div>
+
+        <div style={{ padding: '30px 0' }}>
+          <Table />
+        </div>
 
         <Paper width="800px">
           <h4>Paper title</h4>
-          <p style={{ padding: '30px 0' }}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa quae, quasi sed commodi sit est, sint ipsam
-            nam illum pariatur nobis earum fuga voluptatibus eveniet! Velit consequatur nemo dolores dolorum. Architecto
-            numquam, quae aut deserunt est ipsa soluta itaque veritatis! Sed quo officia, beatae a dolorum, amet culpa
-            obcaecati exercitationem minima iusto, quam architecto dolor doloribus praesentium. Amet, laborum animi.
-          </p>
+          <Text additionalStyles={{ padding: '30px 0' }}>
+            Примітка.: Функція TEXT перетворює числа на текст, що може ускладнити їх використання в подальших
+            обчисленнях. Рекомендуємо зберігати вихідне значення в одній клітинці, а функцію TEXT використовувати в
+            іншій. Потім, якщо знадобиться створити інші формули, завжди посилайтеся на вихідне значення, а не на
+            результат функції TEXT.
+          </Text>
           <Input value={inputValue} setValue={setInputValue} label="input label" />
 
           <Input value={inputValue} setValue={setInputValue} label="input label" variant="standart" />
@@ -209,6 +237,31 @@ export default function Home() {
             Button
           </Button>
           <Button color="violet" variant="outlined">
+            Button
+          </Button>
+        </div>
+
+        <div>
+          <Button color="red" variant="text">
+            Button
+          </Button>
+          <Button color="green" variant="text">
+            Button
+          </Button>
+          <Button color="blue" variant="text">
+            Button
+          </Button>
+
+          <Button color="pink" variant="text">
+            Button
+          </Button>
+          <Button color="gray" variant="text">
+            Button
+          </Button>
+          <Button color="black" variant="text">
+            Button
+          </Button>
+          <Button color="violet" variant="text">
             Button
           </Button>
         </div>

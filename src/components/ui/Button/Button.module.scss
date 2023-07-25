@@ -7,7 +7,7 @@
   text-transform: uppercase;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s linear;
 }
 
 .button:hover {
@@ -16,7 +16,13 @@
 }
 
 .button:active {
-  transform: translateY(5%);
+  transform: scale(0.95);
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: default;
+  transform: scale(1);
 }
 
 .hover {
