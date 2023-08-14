@@ -140,19 +140,19 @@ export default function Home() {
           Custom title Level 1
         </Title>
         <Title align="left" Variant="h2" color="gray">
-          Custom title Level 1
+          Custom title Level 2
         </Title>
         <Title align="left" Variant="h3" color="green">
-          Custom title Level 1
+          Custom title Level 3
         </Title>
         <Title align="left" Variant="h4">
-          Custom title Level 1
+          Custom title Level 4
         </Title>
         <Title align="left" Variant="h5">
-          Custom title Level 1
+          Custom title Level 5
         </Title>
         <Title align="left" Variant="h6">
-          Custom title Level 1
+          Custom title Level 6
         </Title>
 
         <div style={{ padding: '30px' }}>

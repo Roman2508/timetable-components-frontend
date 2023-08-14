@@ -1,8 +1,10 @@
 .tableWrapper {
-  border-left: 1px solid rgb(255, 255, 255);
-  border-right: 1px solid rgb(255, 255, 255);
-  border-radius: 3px;
+  // border-left: 1px solid rgb(255, 255, 255);
+  // border-right: 1px solid rgb(255, 255, 255);
+  border-radius: 6px;
+  padding: 20px;
   overflow: hidden;
+  background-color: #343a46;
 }
 
 .table {
@@ -12,14 +14,19 @@
 }
 
 .tableHead {
+  border-bottom: 1px solid #ffffff;
 }
 
 .tableBody {
 }
 
 .tableRow {
+}
+
+.tableBodyRow {
+  cursor: default;
   &:nth-child(even) {
-    background-color: #bcbcbc0f;
+    // background-color: #bcbcbc0f;
   }
 
   &:hover {
@@ -29,8 +36,8 @@
 
 .cell {
   vertical-align: middle;
-  border-top: 1px solid rgb(255, 255, 255);
-  border-bottom: 1px solid rgb(255, 255, 255);
+  // border-top: 1px solid rgb(255, 255, 255);
+  // border-bottom: 1px solid rgb(255, 255, 255);
   padding: 10px 12px;
   max-width: 100px;
 

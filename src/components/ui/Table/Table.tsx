@@ -56,7 +56,15 @@ const Table: React.FC<React.PropsWithChildren<ITableProps>> = ({}) => {
         </thead>
 
         <tbody className={styles.tableBody}>
-          <tr className={styles.tableRow}>
+          <tr className={cn(styles.tableRow, styles.tableBodyRow)}>
+            <td className={cn(styles.tableCell, styles.cell)}>Ділова іноземна мова</td>
+            <td className={cn(styles.tableCell, styles.cell)}>Company2</td>
+            <td className={cn(styles.tableCell, styles.cell)}>Contact3</td>
+            <td className={cn(styles.tableCell, styles.cell)}>Contact4</td>
+            <td className={cn(styles.tableCell, styles.cell)}>Contact5</td>
+            <td className={cn(styles.tableCell, styles.cell)}>Country6</td>
+          </tr>
+          <tr className={cn(styles.tableRow, styles.tableBodyRow)}>
             <td className={cn(styles.tableCell, styles.cell)}>Company1</td>
             <td className={cn(styles.tableCell, styles.cell)}>Company2</td>
             <td className={cn(styles.tableCell, styles.cell)}>Contact3</td>
@@ -64,7 +72,7 @@ const Table: React.FC<React.PropsWithChildren<ITableProps>> = ({}) => {
             <td className={cn(styles.tableCell, styles.cell)}>Contact5</td>
             <td className={cn(styles.tableCell, styles.cell)}>Country6</td>
           </tr>
-          <tr className={styles.tableRow}>
+          <tr className={cn(styles.tableRow, styles.tableBodyRow)}>
             <td className={cn(styles.tableCell, styles.cell)}>Company1</td>
             <td className={cn(styles.tableCell, styles.cell)}>Company2</td>
             <td className={cn(styles.tableCell, styles.cell)}>Contact3</td>
@@ -72,15 +80,7 @@ const Table: React.FC<React.PropsWithChildren<ITableProps>> = ({}) => {
             <td className={cn(styles.tableCell, styles.cell)}>Contact5</td>
             <td className={cn(styles.tableCell, styles.cell)}>Country6</td>
           </tr>
-          <tr className={styles.tableRow}>
-            <td className={cn(styles.tableCell, styles.cell)}>Company1</td>
-            <td className={cn(styles.tableCell, styles.cell)}>Company2</td>
-            <td className={cn(styles.tableCell, styles.cell)}>Contact3</td>
-            <td className={cn(styles.tableCell, styles.cell)}>Contact4</td>
-            <td className={cn(styles.tableCell, styles.cell)}>Contact5</td>
-            <td className={cn(styles.tableCell, styles.cell)}>Country6</td>
-          </tr>
-          <tr className={styles.tableRow}>
+          <tr className={cn(styles.tableRow, styles.tableBodyRow)}>
             <td className={cn(styles.tableCell, styles.cell)}>Company1</td>
             <td className={cn(styles.tableCell, styles.cell)}>Company2</td>
             <td className={cn(styles.tableCell, styles.cell)}>Contact3</td>
