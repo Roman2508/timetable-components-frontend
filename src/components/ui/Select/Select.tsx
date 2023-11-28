@@ -1,8 +1,9 @@
 import React from 'react'
-import styles from './Select.module.scss'
 import cn from 'classnames'
-import { ThemeContext } from '@/app/layout'
 import { BiSolidDownArrow } from 'react-icons/bi'
+
+import styles from './Select.module.scss'
+import { ThemeContext } from '@/app/layout'
 
 interface ISelectProps {
   children?: JSX.Element | JSX.Element[]
@@ -36,10 +37,7 @@ const Select: React.FC<ISelectProps> = ({
       setIsFocus(false)
     }
     setIsFocusLabel(false)
-    setIsFocusLabel(false)
   }
-
-  console.log(value)
 
   return (
     <>
@@ -49,11 +47,12 @@ const Select: React.FC<ISelectProps> = ({
             [styles.focusLabel]: isFocusLabel,
             [styles.standartLabel]: variant === 'standart',
             [styles.outlinedLabel]: variant === 'outlined',
-            [styles.focusLabelDark]: isFocus && colorMode === 'dark',
-            [styles.focusLabelLight]: isFocus && colorMode === 'light',
-            [styles.focusStandartLabel]: isFocus && variant === 'standart',
-            [styles.focusOutlinedLabel]: isFocus && variant === 'outlined',
-          })}>
+            [styles.focusLabelDark]: (isFocus && colorMode === 'dark') || (value && variant === 'standart'),
+            [styles.focusLabelLight]: (isFocus && colorMode === 'light') || (value && variant === 'outlined'),
+            [styles.focusStandartLabel]: (isFocus && variant === 'standart') || (value && variant === 'standart'),
+            [styles.focusOutlinedLabel]: (isFocus && variant === 'outlined') || (value && variant === 'outlined'),
+          })}
+        >
           {label}
         </label>
 
@@ -61,7 +60,8 @@ const Select: React.FC<ISelectProps> = ({
           className={cn(styles.inputWrapper, {
             [styles.bottomLine]: isFocus && variant === 'standart',
             [styles.focusInput]: isFocusLabel,
-          })}>
+          })}
+        >
           {/*  */}
           <input
             readOnly
@@ -93,7 +93,8 @@ const Select: React.FC<ISelectProps> = ({
             [styles.selectListLight]: colorMode === 'light',
             [styles.selectListHide]: !isSelectListOpen,
           })}
-          onClick={() => setSelectListOpen(false)}>
+          onClick={() => setSelectListOpen(false)}
+        >
           {children}
         </div>
       </div>

@@ -22,6 +22,11 @@ import Text from '@/src/components/ui/Text/Text'
 import IconButton from '@/src/components/ui/IconButton/IconButton'
 import { CiLight, CiDark } from 'react-icons/ci'
 import Table from '@/src/components/ui/Table/Table'
+import TableHead from '@/src/components/ui/Table/TableHead'
+import TableRow from '@/src/components/ui/Table/TableRow'
+import TableHeadCell from '@/src/components/ui/Table/TableHeadCell'
+import TableBody from '@/src/components/ui/Table/TableBody'
+import TableBodyCell from '@/src/components/ui/Table/TableBodyCell'
 // import {} from 'next/font/local'
 
 // todo:
@@ -62,7 +67,8 @@ export default function Home() {
       className={cn(styles.main, {
         [styles.darkTheme]: colorMode === 'dark',
         [styles.lightTheme]: colorMode === 'light',
-      })}>
+      })}
+    >
       <Modal isShow={isShow} setIsShow={setIsShow} ref={ref} modalTitle="SDFDF SFSD F S">
         <Text>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa quae, quasi sed commodi sit est, sint ipsam
@@ -97,7 +103,8 @@ export default function Home() {
             justifyContent: 'space-between',
             alignItems: 'flex-end',
             flexWrap: 'wrap',
-          }}>
+          }}
+        >
           <Input value={inputValue} setValue={setInputValue} label="input label" />
 
           <Input value={inputValue} setValue={setInputValue} label="input label" variant="standart" />
@@ -127,7 +134,8 @@ export default function Home() {
             justifyContent: 'space-between',
             alignItems: 'flex-end',
             flexWrap: 'wrap',
-          }}>
+          }}
+        >
           <Select value={selectItemValue} label="input label" variant="standart">
             <SelectItem value={'Item 1'} onChange={setSelectItemValue} />
             <SelectItem value={'Item 2'} onChange={setSelectItemValue} />
@@ -166,7 +174,33 @@ export default function Home() {
         </div>
 
         <div style={{ padding: '30px 0' }}>
-          <Table />
+          <Table>
+            <TableHead>
+              <TableRow variant="head">
+                <TableHeadCell showControls>Company1</TableHeadCell>
+                <TableHeadCell showControls>Company2</TableHeadCell>
+                <TableHeadCell showControls>Company3</TableHeadCell>
+                <TableHeadCell showControls>Company4</TableHeadCell>
+                <TableHeadCell showControls>Company5</TableHeadCell>
+                <TableHeadCell showControls>Company6</TableHeadCell>
+              </TableRow>
+            </TableHead>
+
+            <TableBody>
+              {Array(5)
+                .fill(null)
+                .map((_, i) => (
+                  <TableRow key={i}>
+                    <TableBodyCell align="left">Ділова іноземна мова</TableBodyCell>
+                    <TableBodyCell>Company2</TableBodyCell>
+                    <TableBodyCell>Company3</TableBodyCell>
+                    <TableBodyCell>Company4</TableBodyCell>
+                    <TableBodyCell>Company5</TableBodyCell>
+                    <TableBodyCell>Company6</TableBodyCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
         </div>
 
         <Paper width="800px">

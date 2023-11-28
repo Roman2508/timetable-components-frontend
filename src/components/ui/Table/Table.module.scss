@@ -1,9 +1,14 @@
 .tableWrapper {
-  // border-left: 1px solid rgb(255, 255, 255);
-  // border-right: 1px solid rgb(255, 255, 255);
   border-radius: 6px;
   padding: 20px;
   overflow: hidden;
+}
+
+.tableWrapper.light {
+  background-color: #ffffff;
+}
+
+.tableWrapper.dark {
   background-color: #343a46;
 }
 
@@ -25,24 +30,29 @@
 
 .tableBodyRow {
   cursor: default;
-  &:nth-child(even) {
-    // background-color: #bcbcbc0f;
-  }
+  // &:nth-child(even) {
+  // background-color: #bcbcbc0f;
+  // }
+}
 
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.15);
-  }
+.tableBodyRow.dark:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.tableBodyRow.light:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.cell.controls:hover span {
+  transition: margin-right 0.15s ease-in-out;
+  margin-right: 8px;
 }
 
 .cell {
   vertical-align: middle;
-  // border-top: 1px solid rgb(255, 255, 255);
-  // border-bottom: 1px solid rgb(255, 255, 255);
   padding: 10px 12px;
   max-width: 100px;
 
   span {
-    // margin-right: -20px;
     cursor: default;
   }
 
@@ -59,11 +69,6 @@
   svg {
     position: relative;
     top: 2px;
-  }
-
-  &:hover span {
-    transition: margin-right 0.15s ease-in-out;
-    margin-right: 8px;
   }
 
   &:hover .optionIconWrapper {
