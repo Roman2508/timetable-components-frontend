@@ -10,6 +10,7 @@ interface IInputProps {
   label?: string
   value?: string
   width?: string
+  htmlType?: 'text' | 'number'
   setValue: React.Dispatch<React.SetStateAction<string>>
 }
 
@@ -19,6 +20,7 @@ const Input: React.FC<IInputProps> = ({
   value = '',
   isError = false,
   width = '220px',
+  htmlType = 'text',
   errorMessage = '',
   variant = 'outlined',
 }) => {
@@ -51,7 +53,8 @@ const Input: React.FC<IInputProps> = ({
           [styles.focusLabelLight]: isFocus && colorMode === 'light',
           [styles.focusStandartLabel]: isFocus && variant === 'standart',
           [styles.focusOutlinedLabel]: isFocus && variant === 'outlined',
-        })}>
+        })}
+      >
         {label}
       </label>
 
@@ -60,11 +63,12 @@ const Input: React.FC<IInputProps> = ({
           [styles.bottomLine]: isFocus && variant === 'standart',
           [styles.focusInput]: isFocusLabel,
           [styles.errorBottomLine]: isError,
-        })}>
+        })}
+      >
         {/*  */}
         <input
           value={value}
-          type="text"
+          type={htmlType}
           onBlur={onBlurHandler}
           style={{ width: width }}
           onFocus={onFocusHandler}

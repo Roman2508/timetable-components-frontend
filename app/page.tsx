@@ -27,6 +27,7 @@ import TableRow from '@/src/components/ui/Table/TableRow'
 import TableHeadCell from '@/src/components/ui/Table/TableHeadCell'
 import TableBody from '@/src/components/ui/Table/TableBody'
 import TableBodyCell from '@/src/components/ui/Table/TableBodyCell'
+import Checkbox from '@/src/components/ui/Checkbox/Checkbox'
 // import {} from 'next/font/local'
 
 // todo:
@@ -42,9 +43,9 @@ import TableBodyCell from '@/src/components/ui/Table/TableBodyCell'
 // text component done
 // tabs component ??
 // icon-button component done
+// table component
 
 // tooltip component // всплывающая подсказка
-// table component
 // checkbox component
 // sidebar component
 // header component
@@ -126,6 +127,10 @@ export default function Home() {
             errorMessage="Не вірний формат пошти"
           />
         </div>
+
+        <Checkbox onClick={(checked) => console.log(checked)} color="black" />
+
+        <Checkbox onClick={(checked) => console.log(checked)} />
 
         <div
           style={{

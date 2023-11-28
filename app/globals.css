@@ -1,5 +1,11 @@
 @import './fonts/font.css';
 
+:root {
+  --primary-color: #20bd5f;
+  --dark-color: #00272f;
+  --error-color: #ca4240;
+}
+
 * {
   font-family: 'Gilroy', 'Roboto', 'sans-serif';
   box-sizing: border-box;
