@@ -29,6 +29,7 @@ import TableBody from "@/src/components/ui/Table/TableBody"
 import TableBodyCell from "@/src/components/ui/Table/TableBodyCell"
 import Checkbox from "@/src/components/ui/Checkbox/Checkbox"
 import Select from "@/src/components/ui/Select/Select"
+import { useForm, Controller } from "react-hook-form"
 
 // import {} from 'next/font/local'
 
@@ -38,21 +39,25 @@ import Select from "@/src/components/ui/Select/Select"
 // modal component done
 // paper component done
 // toggle button component done
-// input component done     !!!type number???????
+// input component done
 // select component done
 // list component done
 // title component done
 // text component done
-// tabs component ??
+// checkbox component done
+// tabs component done
 // icon-button component done
-// table component
+// table component done
 
 // tooltip component // всплывающая подсказка
-// checkbox component
 // sidebar component
 // header component
 // alert component
 // pagination component
+
+const defaultValues = {
+  select: "",
+}
 
 export default function Home() {
   const { colorMode } = React.useContext(ThemeContext)
@@ -69,6 +74,9 @@ export default function Home() {
   const handleChange = (e: any) => {
     setSelectValue(e)
   }
+
+  const { handleSubmit, reset, watch, control, register } = useForm({ defaultValues })
+  const onSubmit = (data) => console.log(data)
 
   return (
     <main
@@ -173,7 +181,7 @@ export default function Home() {
             <SelectItem value={"Item 4"} onChange={setSelectItemValue} />
           </Select2>
 
-          <Select
+          {/* <Select
             width={"200px"}
             selectValue={selectValue}
             onChange={handleChange}
@@ -184,7 +192,36 @@ export default function Home() {
               { value: "van", label: "Van" },
               { value: "lorem", label: "Lorem" },
             ]}
-          />
+          /> */}
+
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Controller
+              render={({ field }) => (
+                <Select
+                  width={"200px"}
+                  selectValue={selectValue}
+                  // onChange={handleChange}
+                  options={[
+                    { value: "chocolate", label: "Chocolate" },
+                    { value: "strawberry", label: "Strawberry" },
+                    { value: "vanilla", label: "Vanilla" },
+                    { value: "van", label: "Van" },
+                    { value: "lorem", label: "Lorem" },
+                  ]}
+                  // defaultValue={{ value: "chocolate", label: "Chocolate" }}
+                  label={"label"}
+                  {...field}
+                />
+              )}
+              control={control}
+              name="select"
+            />
+
+            <button type="button" onClick={() => reset({ defaultValues })}>
+              Reset
+            </button>
+            <input type="submit" />
+          </form>
         </div>
 
         <Title align="left" Variant="h1">

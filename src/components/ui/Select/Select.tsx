@@ -6,18 +6,13 @@ import "./Select.scss"
 import styles from "./Select.module.scss"
 import { ThemeContext } from "@/app/layout"
 
-// const options = [
-//   { value: "chocolate", label: "Chocolate" },
-//   { value: "strawberry", label: "Strawberry" },
-//   { value: "vanilla", label: "Vanilla" },
-// ]
-
 interface ISelectComponentProps {
   labelBgColor?: "light" | "dark"
+  label?: string
   options?: { value: string; label: string }[]
   onChange?: (e: any) => void
   selectValue?: { value: string; label: string } | null
-  width?: string
+  [propName: string]: any
 }
 
 const SelectComponent: React.FC<ISelectComponentProps> = ({
@@ -26,6 +21,8 @@ const SelectComponent: React.FC<ISelectComponentProps> = ({
   onChange = (e: any) => {},
   selectValue = null,
   width = "auto",
+  label = null,
+  ...props
 }) => {
   const { colorMode } = React.useContext(ThemeContext)
 
@@ -37,18 +34,20 @@ const SelectComponent: React.FC<ISelectComponentProps> = ({
         ["select-menu-dark"]: colorMode === "dark",
       })}
     >
-      <label
-        className={cn(styles.label, {
-          [styles.focused]: isFocused,
-          [styles.notEmpty]: selectValue,
-          [styles["labelLight"]]: labelBgColor === "light",
-          [styles["labelDark"]]: labelBgColor === "dark",
-          [styles["light"]]: colorMode === "light",
-          [styles["dark"]]: colorMode === "dark",
-        })}
-      >
-        label
-      </label>
+      {label && (
+        <label
+          className={cn(styles.label, {
+            [styles.focused]: isFocused,
+            [styles.notEmpty]: selectValue || props?.value,
+            [styles["labelLight"]]: labelBgColor === "light",
+            [styles["labelDark"]]: labelBgColor === "dark",
+            [styles["light"]]: colorMode === "light",
+            [styles["dark"]]: colorMode === "dark",
+          })}
+        >
+          {label}
+        </label>
+      )}
 
       <Select
         styles={{
@@ -76,6 +75,7 @@ const SelectComponent: React.FC<ISelectComponentProps> = ({
         }}
         /* @ts-ignore */
         components={{ Option: CustomOption }}
+        {...props}
       />
     </div>
   )
