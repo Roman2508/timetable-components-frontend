@@ -10,7 +10,7 @@
   }
 }
 
-.wrapper input[type='checkbox'] {
+.wrapper input[type="checkbox"] {
   display: none;
 }
 
@@ -22,6 +22,10 @@
 
   &.black path {
     fill: var(--dark-color);
+  }
+
+  &.white path {
+    fill: #ffffff;
   }
 
   &.primary path {

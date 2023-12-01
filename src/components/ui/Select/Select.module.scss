@@ -1,230 +1,115 @@
-.wrapper {
+.select-wrapper {
   position: relative;
-  display: inline-flex;
-  z-index: 3;
 }
 
-/* label */
+.select {
+  border: 1px solid #acaec9 !important;
+  background-color: transparent !important;
+  position: relative !important;
+
+  &.light * {
+    color: #000000 !important;
+  }
+
+  &.dark * {
+    color: #fafafa !important;
+  }
+
+  &.light:hover {
+    border: 1px solid #000000 !important;
+  }
+  &.dark:hover {
+    border: 1px solid #ffffff !important;
+  }
+
+  &::before {
+    content: "" !important;
+    position: absolute !important;
+  }
+
+  &.focused {
+    background-color: transparent !important;
+    //   border: 2px solid #20bd5f !important;
+    border-color: #20bd5f !important;
+    box-shadow: 0 0 0 1px #20bd5f !important;
+
+    &:hover {
+      border: 1px solid #20bd5f !important;
+    }
+  }
+}
 
 .label {
-  top: 50%;
-  font-size: 18px;
   position: absolute;
-  transform: translateY(-50%);
-  transition: all 0.2s ease-in-out;
-}
-
-.label.errorLabel {
-  color: #ca4240;
-}
-
-.outlinedLabel {
-  left: 9px;
-}
-.standartLabel {
-  left: 0;
-}
-
-.focusLabelLight {
-  top: 0;
-  z-index: 3;
-  padding: 0 5px;
-  font-size: 13px;
-  background-color: #fafafa;
-}
-
-.focusLabelDark {
-  top: 0;
-  z-index: 3;
-  padding: 0 5px;
-  font-size: 13px;
-  background-color: #23272f;
-}
-
-.focusLabel {
-  // color: #087ea4;
-  color: #20bd5f;
-}
-
-.focusStandartLabel {
-  left: -5px;
-  background-color: transparent;
-}
-
-/* label */
-
-/* input */
-
-.inputWrapper {
-  position: relative;
-}
-
-.input {
-  outline: none;
-  cursor: pointer;
-  font-size: 18px;
-  background-color: transparent;
-}
-
-.outlinedInput.darkModeInput:hover {
-  border: 1px solid #ffffff;
-}
-.outlinedInput.lightModeInput:hover {
-  border: 1px solid #000000;
-}
-
-.standartInput {
-  border: 0;
-  padding: 8px 0;
-  border-bottom: 1px solid #acaec9;
-
-  &:hover {
-    border-bottom: 1px solid #000000;
-  }
-}
-
-.darkModeInput {
-  color: #fff;
-
-  &:hover {
-    border-bottom: 1px solid #ffffff;
-  }
-}
-
-.inputWrapper::after {
-  content: '';
-  position: absolute;
-  transition: all 0.2s ease-in-out;
-  transform: scaleX(0);
-  width: 100%;
-  height: 2px;
-  // background-color: #087ea4;
-  background-color: #20bd5f;
-  bottom: 0;
-  left: 0;
-}
-
-.inputWrapper.errorBottomLine::after {
-  background-color: #ca4240;
-}
-
-.inputWrapper.bottomLine.focusInput::after {
-  transform: scaleX(1);
-}
-
-.outlinedInput {
-  padding: 10px 30px 14px 10px;
-  border: 1px solid #acaec9;
-  border-radius: 5px;
-
-  &:hover {
-    border: 1px solid #000000;
-  }
-
-  &:focus {
-    padding: 9.04px 29px 13.04px 9px;
-    // border: 2px solid #087ea4 !important;
-    border: 2px solid #20bd5f !important;
-    position: relative;
-  }
-}
-
-.outlinedInput.lightModeInput:hover {
-  border: 1px solid #000000;
-}
-
-.inputIcon {
-  position: absolute;
-  right: 8px;
   top: 50%;
   transform: translateY(-50%);
-  transition: transform 0.2s ease-in-out;
+  left: 10px;
+  z-index: 10;
+  transition: all 0.2s ease-in-out;
+  z-index: 0;
+
+  &.focused,
+  &.notEmpty {
+    top: -1px;
+    font-size: 12px;
+    z-index: 1;
+    color: #20bd5f;
+    transition: all 0.2s ease-in-out;
+
+    &::before {
+      content: "";
+      width: calc(100% + 7px);
+      height: 4px;
+      top: 45%;
+      left: -3px;
+      z-index: -1;
+      display: inline-block;
+      position: absolute;
+    }
+  }
+
+  &.labelLight {
+    &.light::before {
+      background-color: #f4f4f4;
+    }
+    &.dark::before {
+      background-color: #23272f;
+    }
+  }
+
+  &.labelDark {
+    &.light::before {
+      background-color: #ffffff;
+    }
+    &.dark::before {
+      background-color: #343a46;
+    }
+  }
+
+  &.notEmpty.light {
+    color: #00272f;
+  }
+  &.notEmpty.dark {
+    color: #fafafa;
+  }
+  &.focused.notEmpty {
+    color: #20bd5f;
+  }
 }
 
-.rotated {
-  transform: translateY(-50%) rotate(-180deg);
-}
+/* select items */
 
-/* select */
+.select-item {
+  padding: 8px;
+  color: #000 !important;
 
-.selectList {
-  z-index: 3;
-  top: 50px;
-  width: 100%;
-  padding: 8px 0 8px 6px;
-  border-radius: 8px;
-  position: absolute;
-  max-height: 300px;
-  overflow-y: scroll;
-}
-
-.selectListLight {
-  background-color: #ffffff;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
-}
-.selectListDark {
-  background-color: #343a46;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-.selectListHide {
-  display: none;
-}
-
-.selectListOverlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  bottom: 0;
-  z-index: 2;
-}
-
-/* select list scrollbar */
-
-.selectList::-webkit-scrollbar {
-  width: 6px;
-}
-
-/* Track */
-.selectList::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-/* Handle */
-.selectList::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 8px;
-}
-
-/* Handle on hover */
-.selectList::-webkit-scrollbar-thumb:hover {
-  background: #6a6a6a;
-}
-/* // select list scrollbar */
-
-.selectItem {
-  cursor: pointer;
-  padding: 8px 16px;
-}
-
-.selectItemDark {
   &:hover {
-    background-color: #414857;
+    background-color: lighten($color: #20bd5f, $amount: 45%);
+    cursor: pointer;
+    user-select: none;
   }
 
-  &:active {
-    background-color: #30343c;
+  &.selected {
+    background-color: #20bd5f;
   }
 }
-
-.selectItemLight {
-  &:hover {
-    background-color: #eff0f0;
-  }
-
-  &:active {
-    background-color: #d5d5d5;
-  }
-}
-/* // select */

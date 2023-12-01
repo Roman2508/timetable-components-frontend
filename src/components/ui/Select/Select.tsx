@@ -1,107 +1,99 @@
-import React from 'react'
-import cn from 'classnames'
-import { BiSolidDownArrow } from 'react-icons/bi'
+import React from "react"
+import cn from "classnames"
+import Select, { OptionProps } from "react-select"
 
-import styles from './Select.module.scss'
-import { ThemeContext } from '@/app/layout'
+import "./Select.scss"
+import styles from "./Select.module.scss"
+import { ThemeContext } from "@/app/layout"
 
-interface ISelectProps {
-  children?: JSX.Element | JSX.Element[]
-  variant?: 'outlined' | 'standart'
-  label?: string
-  value?: string
+// const options = [
+//   { value: "chocolate", label: "Chocolate" },
+//   { value: "strawberry", label: "Strawberry" },
+//   { value: "vanilla", label: "Vanilla" },
+// ]
+
+interface ISelectComponentProps {
+  labelBgColor?: "light" | "dark"
+  options?: { value: string; label: string }[]
+  onChange?: (e: any) => void
+  selectValue?: { value: string; label: string } | null
   width?: string
 }
 
-const Select: React.FC<ISelectProps> = ({
-  children,
-  label = '',
-  value = '',
-  width = '220px',
-  variant = 'outlined',
+const SelectComponent: React.FC<ISelectComponentProps> = ({
+  labelBgColor = "light",
+  options = [],
+  onChange = (e: any) => {},
+  selectValue = null,
+  width = "auto",
 }) => {
   const { colorMode } = React.useContext(ThemeContext)
 
-  const [isFocus, setIsFocus] = React.useState(false)
-  const [isFocusLabel, setIsFocusLabel] = React.useState(false)
-  const [isSelectListOpen, setSelectListOpen] = React.useState(false)
-
-  const onFocusHandler = () => {
-    setIsFocus(true)
-    setIsFocusLabel(true)
-    setSelectListOpen(true)
-  }
-
-  const onBlurHandler = () => {
-    if (!value) {
-      setIsFocus(false)
-    }
-    setIsFocusLabel(false)
-  }
+  const [isFocused, setIsFocused] = React.useState(false)
 
   return (
-    <>
-      <div className={styles.wrapper}>
-        <label
-          className={cn(styles.label, {
-            [styles.focusLabel]: isFocusLabel,
-            [styles.standartLabel]: variant === 'standart',
-            [styles.outlinedLabel]: variant === 'outlined',
-            [styles.focusLabelDark]: (isFocus && colorMode === 'dark') || (value && variant === 'standart'),
-            [styles.focusLabelLight]: (isFocus && colorMode === 'light') || (value && variant === 'outlined'),
-            [styles.focusStandartLabel]: (isFocus && variant === 'standart') || (value && variant === 'standart'),
-            [styles.focusOutlinedLabel]: (isFocus && variant === 'outlined') || (value && variant === 'outlined'),
-          })}
-        >
-          {label}
-        </label>
+    <div
+      className={cn(styles["select-wrapper"], {
+        ["select-menu-dark"]: colorMode === "dark",
+      })}
+    >
+      <label
+        className={cn(styles.label, {
+          [styles.focused]: isFocused,
+          [styles.notEmpty]: selectValue,
+          [styles["labelLight"]]: labelBgColor === "light",
+          [styles["labelDark"]]: labelBgColor === "dark",
+          [styles["light"]]: colorMode === "light",
+          [styles["dark"]]: colorMode === "dark",
+        })}
+      >
+        label
+      </label>
 
-        <div
-          className={cn(styles.inputWrapper, {
-            [styles.bottomLine]: isFocus && variant === 'standart',
-            [styles.focusInput]: isFocusLabel,
-          })}
-        >
-          {/*  */}
-          <input
-            readOnly
-            value={value}
-            type="text"
-            onBlur={onBlurHandler}
-            style={{ width: width }}
-            onFocus={onFocusHandler}
-            className={cn(styles.input, {
-              [styles.outlinedInput]: variant === 'outlined',
-              [styles.standartInput]: variant === 'standart',
-              [styles.darkModeInput]: colorMode === 'dark',
-              [styles.lightModeInput]: colorMode === 'light',
-            })}
-            // onChange={(e) => setValue(e.target.value)}
-          />
+      <Select
+        styles={{
+          control: (baseStyles /*,  state */) => ({
+            ...baseStyles,
+            width,
+          }),
+        }}
+        value={selectValue}
+        onChange={onChange}
+        options={options}
+        placeholder=""
+        // menuIsOpen
+        classNames={{
+          control: (state) => {
+            setIsFocused(state.isFocused)
 
-          <BiSolidDownArrow
-            className={cn(styles.inputIcon, {
-              [styles.rotated]: isFocusLabel,
-            })}
-            size={14}
-          />
-        </div>
-
-        <div
-          className={cn(styles.selectList, {
-            [styles.selectListDark]: colorMode === 'dark',
-            [styles.selectListLight]: colorMode === 'light',
-            [styles.selectListHide]: !isSelectListOpen,
-          })}
-          onClick={() => setSelectListOpen(false)}
-        >
-          {children}
-        </div>
-      </div>
-
-      {isSelectListOpen && <div className={styles.selectListOverlay} onClick={() => setSelectListOpen(false)} />}
-    </>
+            return cn({
+              [styles.select]: true,
+              [styles["focused"]]: state.isFocused,
+              [styles["light"]]: colorMode === "light",
+              [styles["dark"]]: colorMode === "dark",
+            })
+          },
+        }}
+        /* @ts-ignore */
+        components={{ Option: CustomOption }}
+      />
+    </div>
   )
 }
 
-export default Select
+const CustomOption = (props: OptionProps) => {
+  const { innerProps, isDisabled, data, children, innerRef, getStyles } = props
+  // console.log(props)
+
+  return !isDisabled ? (
+    <div
+      ref={innerRef}
+      {...innerProps}
+      className={cn(styles["select-item"], { [styles.selected]: innerProps["aria-selected"] })}
+    >
+      {children}
+    </div>
+  ) : null
+}
+
+export default SelectComponent

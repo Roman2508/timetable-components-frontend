@@ -1,33 +1,35 @@
-'use client'
+"use client"
 
-import React from 'react'
-import Image from 'next/image'
-import styles from './page.module.css'
-import Button from '@/src/components/ui/Button/Button'
-import { ThemeContext } from './layout'
-import cn from 'classnames'
-import Paper from '@/src/components/ui/Paper/Paper'
-import SwitchColorMode from '@/src/components/ui/SwitchColorMode/SwitchColorMode'
-import Modal from '@/src/components/ui/Modal/Modal'
-import { handleClickOutside } from '@/src/hooks/handleClickOutside'
-import ToggleButtonWrapper from '@/src/components/ui/ToggleButton/ToggleButtonWrapper'
-import ToggleButtonItem from '@/src/components/ui/ToggleButton/ToggleButtonItem'
-import Input from '@/src/components/ui/Input/Input'
-import ListWrapper from '@/src/components/ui/List/ListWrapper'
-import ListItem from '@/src/components/ui/List/ListItem'
-import Select from '@/src/components/ui/Select/Select'
-import SelectItem from '@/src/components/ui/Select/SelectItem'
-import Title from '@/src/components/ui/Title/Title'
-import Text from '@/src/components/ui/Text/Text'
-import IconButton from '@/src/components/ui/IconButton/IconButton'
-import { CiLight, CiDark } from 'react-icons/ci'
-import Table from '@/src/components/ui/Table/Table'
-import TableHead from '@/src/components/ui/Table/TableHead'
-import TableRow from '@/src/components/ui/Table/TableRow'
-import TableHeadCell from '@/src/components/ui/Table/TableHeadCell'
-import TableBody from '@/src/components/ui/Table/TableBody'
-import TableBodyCell from '@/src/components/ui/Table/TableBodyCell'
-import Checkbox from '@/src/components/ui/Checkbox/Checkbox'
+import React from "react"
+import Image from "next/image"
+import styles from "./page.module.css"
+import Button from "@/src/components/ui/Button/Button"
+import { ThemeContext } from "./layout"
+import cn from "classnames"
+import Paper from "@/src/components/ui/Paper/Paper"
+import SwitchColorMode from "@/src/components/ui/SwitchColorMode/SwitchColorMode"
+import Modal from "@/src/components/ui/Modal/Modal"
+import { handleClickOutside } from "@/src/hooks/handleClickOutside"
+import ToggleButtonWrapper from "@/src/components/ui/ToggleButton/ToggleButtonWrapper"
+import ToggleButtonItem from "@/src/components/ui/ToggleButton/ToggleButtonItem"
+import Input from "@/src/components/ui/Input/Input"
+import ListWrapper from "@/src/components/ui/List/ListWrapper"
+import ListItem from "@/src/components/ui/List/ListItem"
+import Select2 from "@/src/components/ui/Select2/Select"
+import SelectItem from "@/src/components/ui/Select2/SelectItem"
+import Title from "@/src/components/ui/Title/Title"
+import Text from "@/src/components/ui/Text/Text"
+import IconButton from "@/src/components/ui/IconButton/IconButton"
+import { CiLight, CiDark } from "react-icons/ci"
+import Table from "@/src/components/ui/Table/Table"
+import TableHead from "@/src/components/ui/Table/TableHead"
+import TableRow from "@/src/components/ui/Table/TableRow"
+import TableHeadCell from "@/src/components/ui/Table/TableHeadCell"
+import TableBody from "@/src/components/ui/Table/TableBody"
+import TableBodyCell from "@/src/components/ui/Table/TableBodyCell"
+import Checkbox from "@/src/components/ui/Checkbox/Checkbox"
+import Select from "@/src/components/ui/Select/Select"
+
 // import {} from 'next/font/local'
 
 // todo:
@@ -59,23 +61,29 @@ export default function Home() {
 
   const [activeButton, setActiveButton] = React.useState(0)
 
-  const [inputValue, setInputValue] = React.useState('')
+  const [inputValue, setInputValue] = React.useState("")
 
-  const [selectItemValue, setSelectItemValue] = React.useState('')
+  const [selectItemValue, setSelectItemValue] = React.useState("")
+
+  const [selectValue, setSelectValue] = React.useState(null)
+  const handleChange = (e: any) => {
+    setSelectValue(e)
+  }
 
   return (
     <main
       className={cn(styles.main, {
-        [styles.darkTheme]: colorMode === 'dark',
-        [styles.lightTheme]: colorMode === 'light',
+        [styles.darkTheme]: colorMode === "dark",
+        [styles.lightTheme]: colorMode === "light",
       })}
     >
       <Modal isShow={isShow} setIsShow={setIsShow} ref={ref} modalTitle="SDFDF SFSD F S">
         <Text>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa quae, quasi sed commodi sit est, sint ipsam
-          nam illum pariatur nobis earum fuga voluptatibus eveniet! Velit consequatur nemo dolores dolorum. Architecto
-          numquam, quae aut deserunt est ipsa soluta itaque veritatis! Sed quo officia, beatae a dolorum, amet culpa
-          obcaecati exercitationem minima iusto, quam architecto dolor doloribus praesentium. Amet, laborum animi.
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa quae, quasi sed commodi
+          sit est, sint ipsam nam illum pariatur nobis earum fuga voluptatibus eveniet! Velit
+          consequatur nemo dolores dolorum. Architecto numquam, quae aut deserunt est ipsa soluta
+          itaque veritatis! Sed quo officia, beatae a dolorum, amet culpa obcaecati exercitationem
+          minima iusto, quam architecto dolor doloribus praesentium. Amet, laborum animi.
         </Text>
       </Modal>
 
@@ -84,31 +92,48 @@ export default function Home() {
 
         <button onClick={() => setIsShow(true)}>open modal</button>
 
-        <div style={{ margin: '30px' }}></div>
+        <div style={{ margin: "30px" }}></div>
         <ToggleButtonWrapper>
-          <ToggleButtonItem buttonIndex={0} activeButton={activeButton} setActiveButton={() => setActiveButton(0)}>
+          <ToggleButtonItem
+            buttonIndex={0}
+            activeButton={activeButton}
+            setActiveButton={() => setActiveButton(0)}
+          >
             Група
           </ToggleButtonItem>
-          <ToggleButtonItem buttonIndex={1} activeButton={activeButton} setActiveButton={() => setActiveButton(1)}>
+          <ToggleButtonItem
+            buttonIndex={1}
+            activeButton={activeButton}
+            setActiveButton={() => setActiveButton(1)}
+          >
             Викладач
           </ToggleButtonItem>
-          <ToggleButtonItem buttonIndex={2} activeButton={activeButton} setActiveButton={() => setActiveButton(2)}>
+          <ToggleButtonItem
+            buttonIndex={2}
+            activeButton={activeButton}
+            setActiveButton={() => setActiveButton(2)}
+          >
             Аудиторія
           </ToggleButtonItem>
         </ToggleButtonWrapper>
 
         <div
           style={{
-            padding: '20px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-            flexWrap: 'wrap',
+            padding: "20px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            flexWrap: "wrap",
           }}
         >
           <Input value={inputValue} setValue={setInputValue} label="input label" />
 
-          <Input value={inputValue} setValue={setInputValue} label="input label" variant="standart" />
+          <Input
+            value={inputValue}
+            setValue={setInputValue}
+            label="input label"
+            variant="standart"
+          />
 
           <Input
             value={inputValue}
@@ -134,19 +159,32 @@ export default function Home() {
 
         <div
           style={{
-            padding: '20px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-            flexWrap: 'wrap',
+            padding: "20px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            flexWrap: "wrap",
           }}
         >
-          <Select value={selectItemValue} label="input label" variant="standart">
-            <SelectItem value={'Item 1'} onChange={setSelectItemValue} />
-            <SelectItem value={'Item 2'} onChange={setSelectItemValue} />
-            <SelectItem value={'Item 3'} onChange={setSelectItemValue} />
-            <SelectItem value={'Item 4'} onChange={setSelectItemValue} />
-          </Select>
+          <Select2 value={selectItemValue} label="input label" variant="standart">
+            <SelectItem value={"Item 1"} onChange={setSelectItemValue} />
+            <SelectItem value={"Item 2"} onChange={setSelectItemValue} />
+            <SelectItem value={"Item 3"} onChange={setSelectItemValue} />
+            <SelectItem value={"Item 4"} onChange={setSelectItemValue} />
+          </Select2>
+
+          <Select
+            width={"200px"}
+            selectValue={selectValue}
+            onChange={handleChange}
+            options={[
+              { value: "chocolate", label: "Chocolate" },
+              { value: "strawberry", label: "Strawberry" },
+              { value: "vanilla", label: "Vanilla" },
+              { value: "van", label: "Van" },
+              { value: "lorem", label: "Lorem" },
+            ]}
+          />
         </div>
 
         <Title align="left" Variant="h1">
@@ -168,7 +206,7 @@ export default function Home() {
           Custom title Level 6
         </Title>
 
-        <div style={{ padding: '30px' }}>
+        <div style={{ padding: "30px" }}>
           <IconButton>
             <CiLight size={30} />
           </IconButton>
@@ -178,7 +216,7 @@ export default function Home() {
           </IconButton>
         </div>
 
-        <div style={{ padding: '30px 0' }}>
+        <div style={{ padding: "30px 0" }}>
           <Table>
             <TableHead>
               <TableRow variant="head">
@@ -210,21 +248,32 @@ export default function Home() {
 
         <Paper width="800px">
           <h4>Paper title</h4>
-          <Text additionalStyles={{ padding: '30px 0' }}>
-            Примітка.: Функція TEXT перетворює числа на текст, що може ускладнити їх використання в подальших
-            обчисленнях. Рекомендуємо зберігати вихідне значення в одній клітинці, а функцію TEXT використовувати в
-            іншій. Потім, якщо знадобиться створити інші формули, завжди посилайтеся на вихідне значення, а не на
-            результат функції TEXT.
+          <Text additionalStyles={{ padding: "30px 0" }}>
+            Примітка.: Функція TEXT перетворює числа на текст, що може ускладнити їх використання в
+            подальших обчисленнях. Рекомендуємо зберігати вихідне значення в одній клітинці, а
+            функцію TEXT використовувати в іншій. Потім, якщо знадобиться створити інші формули,
+            завжди посилайтеся на вихідне значення, а не на результат функції TEXT.
           </Text>
-          <Input value={inputValue} setValue={setInputValue} label="input label" />
+          <Input
+            value={inputValue}
+            setValue={setInputValue}
+            label="input label"
+            labelBackColor="dark"
+          />
 
-          <Input value={inputValue} setValue={setInputValue} label="input label" variant="standart" />
+          <Input
+            value={inputValue}
+            setValue={setInputValue}
+            label="input label"
+            variant="standart"
+          />
 
           <Input
             value={inputValue}
             setValue={setInputValue}
             label="input label"
             isError={true}
+            labelBackColor="dark"
             errorMessage="Мінімальна довжина паролю - 6 символів"
           />
 
@@ -237,11 +286,12 @@ export default function Home() {
             errorMessage="Не вірний формат пошти"
           />
 
-          <p style={{ padding: '30px 0' }}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa quae, quasi sed commodi sit est, sint ipsam
-            nam illum pariatur nobis earum fuga voluptatibus eveniet! Velit consequatur nemo dolores dolorum. Architecto
-            numquam, quae aut deserunt est ipsa soluta itaque veritatis! Sed quo officia, beatae a dolorum, amet culpa
-            obcaecati exercitationem minima iusto, quam architecto dolor doloribus praesentium. Amet, laborum animi.
+          <p style={{ padding: "30px 0" }}>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa quae, quasi sed commodi
+            sit est, sint ipsam nam illum pariatur nobis earum fuga voluptatibus eveniet! Velit
+            consequatur nemo dolores dolorum. Architecto numquam, quae aut deserunt est ipsa soluta
+            itaque veritatis! Sed quo officia, beatae a dolorum, amet culpa obcaecati exercitationem
+            minima iusto, quam architecto dolor doloribus praesentium. Amet, laborum animi.
           </p>
         </Paper>
 
@@ -311,7 +361,7 @@ export default function Home() {
           <ListItem>Item 3</ListItem>
         </ListWrapper>
 
-        <div style={{ padding: '100px' }}></div>
+        <div style={{ padding: "100px" }}></div>
       </div>
     </main>
   )

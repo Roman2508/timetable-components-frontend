@@ -1,15 +1,22 @@
-import React from 'react'
-import cn from 'classnames'
+import React from "react"
+import cn from "classnames"
 
-import styles from './Checkbox.module.scss'
+import styles from "./Checkbox.module.scss"
+import { ThemeContext } from "@/app/layout"
 
 interface ICheckboxProps {
   isChecked?: boolean
   onClick?: (...args: any[]) => void
-  color?: 'black' | 'primary'
+  color?: "black" | "primary"
 }
 
-const Checkbox: React.FC<ICheckboxProps> = ({ color = 'primary', isChecked = false, onClick = () => {} }) => {
+const Checkbox: React.FC<ICheckboxProps> = ({
+  color = "primary",
+  isChecked = false,
+  onClick = () => {},
+}) => {
+  const { colorMode } = React.useContext(ThemeContext)
+
   const [checked, setChecked] = React.useState(isChecked)
 
   const handleChange = (event: any) => {
@@ -26,7 +33,11 @@ const Checkbox: React.FC<ICheckboxProps> = ({ color = 'primary', isChecked = fal
 
       {checked ? (
         <svg
-          className={cn(styles.icon, { [styles.black]: color === 'black', [styles.primary]: color === 'primary' })}
+          className={cn(styles.icon, {
+            [styles.black]: color === "black" && colorMode === "light",
+            [styles.white]: color === "black" && colorMode === "dark",
+            [styles.primary]: color === "primary",
+          })}
           focusable="false"
           viewBox="0 0 24 24"
           data-testid="CheckBoxIcon"
@@ -35,7 +46,11 @@ const Checkbox: React.FC<ICheckboxProps> = ({ color = 'primary', isChecked = fal
         </svg>
       ) : (
         <svg
-          className={cn(styles.icon, { [styles.black]: color === 'black', [styles.primary]: color === 'primary' })}
+          className={cn(styles.icon, {
+            [styles.black]: color === "black" && colorMode === "light",
+            [styles.white]: color === "black" && colorMode === "dark",
+            [styles.primary]: color === "primary",
+          })}
           focusable="false"
           aria-hidden="true"
           viewBox="0 0 24 24"
